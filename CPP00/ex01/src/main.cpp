@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 19:57:27 by mafioron          #+#    #+#             */
-/*   Updated: 2025/09/05 19:57:28 by mafioron         ###   ########.fr       */
+/*   Created: 2025/09/08 17:50:25 by mafioron          #+#    #+#             */
+/*   Updated: 2025/09/08 17:50:26 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "phonebook.hpp"
 
-# include <string>
-# include <iostream>
-# include "contact.hpp"
-
-class PhoneBook
+int	main()
 {
-	private:
-		Contact contacts[8];
-	public:
-//		PhoneBook();
-//		~PhoneBook();
-		void	add_contact(PhoneBook pb, int *i);
-		void	print_phonebook(PhoneBook pb);
-};
+	std::string line;
 
-#endif
+	while (1)
+	{
+		std::cout << "Enter command : ADD | SEARCH | EXIT" << std::endl;
+		std::getline(std::cin, line);
+		if (line == "EXIT")
+			exit(0);
+
+	}
+
+}

@@ -15,7 +15,6 @@
 
 # include <string>
 # include <iostream>
-# include "contact.hpp"
 
 class Contact
 {
@@ -26,8 +25,11 @@ class Contact
 		std::string	phone_nb;
 		std::string	darkest_secret;
 	public:
-		Class();
-		~Class();
-}
+		Contact();
+		~Contact();
+		Contact(std::string	first_name, std::string	last_name, std::string nickname, std::string phone_nb, std::string darkest_secret);
+		void	print_info(Contact contact, int i);
+		bool	is_empty();
+};
 
 #endif
