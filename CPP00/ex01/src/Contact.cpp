@@ -12,7 +12,25 @@
 
 #include "phonebook.hpp"
 
-bool	Contact::is_empty()
+Contact::Contact()
+{
+	this->first_name = "";
+	this->last_name = "";
+	this->nickname = "";
+	this->phone_nb = "";
+	this->darkest_secret = "";
+}
+
+Contact::Contact(std::string first_name, std::string last_name, std::string nickname, std::string phone_nb, std::string darkest_secret)
+{
+	this->first_name = first_name;
+	this->last_name = last_name;
+	this->nickname = nickname;
+	this->phone_nb = phone_nb;
+	this->darkest_secret = darkest_secret;
+}
+
+bool	Contact::is_empty() const
 {
 	if (this->first_name.empty())
 		return (true);
@@ -20,22 +38,40 @@ bool	Contact::is_empty()
 		return (false);
 }
 
-void	Contact::print_info(Contact contact, int i)
+void	Contact::print_info(int i)
 {
-	std::cout << i << "." << std::endl << "|\n";
-	if (contact.first_name.size() > 10)
+	std::string	trunc;
+	
+	std::cout << std::setw(2) <<  i << "." << " |";
+	if (this->first_name.size() > 10)
 	{
-		contact.first_name.resize(10, '.');
+		trunc = this->first_name.substr(0, 9);
+		std::cout << std::setw(10) << trunc << '.' << " |";
 	}
-	std::cout << first_name << std::endl << "|\n";
-	if (contact.last_name.size() > 10)
+	else
+		std::cout << std::setw(10) << this->first_name << " |";
+	if (this->last_name.size() > 10)
 	{
-		contact.last_name.resize(10, '.');
+		trunc = this->last_name.substr(0, 9);
+		std::cout << std::setw(10) << trunc << '.' << " |";
 	}
-	std::cout << last_name << std::endl << "|\n";
-	if (contact.nickname.size() > 10)
+	else
+		std::cout << std::setw(10) << this->last_name << " |";
+	if (this->nickname.size() > 10)
 	{
-		contact.nickname.resize(10, '.');
+		trunc = this->nickname.substr(0, 9);
+		std::cout << std::setw(10) << trunc << '.' << " |\n";
 	}
-	std::cout << nickname << std::endl << "|\n";
+	else
+		std::cout << std::setw(10) << nickname << " |\n";
+}
+
+void	Contact::print_full_details()
+{
+	std::cout << "contacts info :" << std::endl;
+	std::cout << this->first_name << std::endl;
+	std::cout << this->last_name << std::endl;
+	std::cout << this->nickname << std::endl;
+	std::cout << this->phone_nb << std::endl;
+	std::cout << this->darkest_secret << std::endl;
 }

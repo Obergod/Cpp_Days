@@ -1,5 +1,5 @@
 # Noms
-NAME = Megaphone
+NAME = Phonebook
 OBJ_DIR = obj
 
 # Repertorys
@@ -24,7 +24,7 @@ CLEAR = \033[2K\r
 
 
 # Sources
-COMMON_SRC = megaphone.cpp
+COMMON_SRC = Contact.cpp phonebook.cpp main.cpp
 
 COMMON_SRCS = $(addprefix $(SRCS_DIR), $(COMMON_SRC))
 OBJ_FILES = $(patsubst $(SRCS_DIR)%.cpp,$(OBJ_DIR)/%.o,$(COMMON_SRCS))

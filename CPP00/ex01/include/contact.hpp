@@ -15,6 +15,7 @@
 
 # include <string>
 # include <iostream>
+# include <iomanip>
 
 class Contact
 {
@@ -26,10 +27,12 @@ class Contact
 		std::string	darkest_secret;
 	public:
 		Contact();
-		~Contact();
 		Contact(std::string	first_name, std::string	last_name, std::string nickname, std::string phone_nb, std::string darkest_secret);
-		void	print_info(Contact contact, int i);
-		bool	is_empty();
+		void	print_info(int i);
+		bool	is_empty() const;
+		void	print_full_details();
 };
+
+
 
 #endif
