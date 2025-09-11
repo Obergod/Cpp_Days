@@ -22,11 +22,14 @@ class PhoneBook
 	private:
 		Contact contacts[8];
 	public:
+		PhoneBook();
+		~PhoneBook();
 		void	add_contact(int *i);
 		bool	print_phonebook();
 		bool	contact_exists(int i) const {return !this->contacts[i].is_empty();};
 		void	print_full_contact(int index) {this->contacts[index].print_full_details();};
 };
+
 
 void	print_separator();
 bool	valid_index(const std::string &str, const PhoneBook &pb, int *index);

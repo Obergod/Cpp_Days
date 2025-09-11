@@ -12,6 +12,11 @@
 
 #include "phonebook.hpp"
 
+Contact::~Contact()
+{
+	return ;
+}
+
 Contact::Contact()
 {
 	this->first_name = "";

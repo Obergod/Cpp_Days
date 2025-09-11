@@ -13,6 +13,16 @@
 #include "phonebook.hpp"
 #include <cstdlib>
 
+PhoneBook::PhoneBook()
+{
+	return ;
+}
+
+PhoneBook::~PhoneBook()
+{
+	return ;
+}
+
 bool	is_number(const std::string &str)
 {
 	for(int i = 0; i < str.size(); i++)
