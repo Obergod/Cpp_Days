@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 20:52:32 by mafioron          #+#    #+#             */
-/*   Updated: 2025/09/11 20:52:33 by mafioron         ###   ########.fr       */
+/*   Created: 2025/09/22 18:17:47 by mafioron          #+#    #+#             */
+/*   Updated: 2025/09/22 18:17:47 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "replace.hpp"
 
-Weapon::Weapon(std::string type) : _type(type)
+int	main()
 {
-}
-
-Weapon::~Weapon()
-{
-}
-
-std::string const	&Weapon::getType()
-{
-	return (this->_type);
-}
-
-void	Weapon::setType(std::string o_type)
-{
-	this->_type = o_type;
+	std::ifstream	inFile("texasdasdt.txt");
+	if (!inFile.is_open())
+	{
+		std::cout << "file does not exist" << std::endl;
+		return (1);
+	}
+	return (0);
 }

@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   replace.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/11 20:52:32 by mafioron          #+#    #+#             */
-/*   Updated: 2025/09/11 20:52:33 by mafioron         ###   ########.fr       */
+/*   Created: 2025/09/22 18:18:21 by mafioron          #+#    #+#             */
+/*   Updated: 2025/09/22 18:18:21 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#ifndef REPLACE_HPP
+# define REPLACE_HPP
 
-Weapon::Weapon(std::string type) : _type(type)
-{
-}
+# include <iostream>
+# include <string>
+# include <fstream>
 
-Weapon::~Weapon()
-{
-}
 
-std::string const	&Weapon::getType()
-{
-	return (this->_type);
-}
 
-void	Weapon::setType(std::string o_type)
-{
-	this->_type = o_type;
-}
+#endif

@@ -13,14 +13,19 @@
 #ifndef WEAPON_HPP
 #define WEAPON_HPP
 
+# include <iostream>
+# include <string>
+
 class	Weapon
 {
 	private:
-		std::string type;
+		std::string _type;
 	public:
-		getType();
-		setType();
-}
+		Weapon(std::string type);
+		~Weapon();
+		std::string const &getType();
+		void	setType(std::string o_type);
+};
 
 
 
