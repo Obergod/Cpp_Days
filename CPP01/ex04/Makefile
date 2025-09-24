@@ -1,5 +1,5 @@
 # Noms
-NAME = Weapons
+NAME = replace
 OBJ_DIR = obj
 
 # Repertorys
