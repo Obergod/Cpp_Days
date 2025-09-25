@@ -1,5 +1,5 @@
 # Noms
-NAME = Fixed
+NAME = Fixed_2
 OBJ_DIR = obj
 
 # Repertorys
