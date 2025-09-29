@@ -12,13 +12,14 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap( std::string name ): _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+ClapTrap::ClapTrap( std::string name ): _name(name), _hitPoints(10), _energyPoints(10),
+										_attackDamage(0), _maxHp(_hitPoints)
 {
 	std::cout << "ClapTrap Default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap( const ClapTrap &other ): _name(other._name), _hitPoints(other._hitPoints),
-											_energyPoints(other._energyPoints), _attackDamage(other._attackDamage)
+ClapTrap::ClapTrap( const ClapTrap &other ): _name(other._name), _hitPoints(other._hitPoints), _energyPoints(other._energyPoints),
+											 _attackDamage(other._attackDamage), _maxHp(other._maxHp)
 {
 	std::cout << "ClapTrap Copy constructor called" << std::endl;
 }
@@ -31,8 +32,9 @@ ClapTrap	&ClapTrap::operator=( const ClapTrap &other )
 		_hitPoints = other._hitPoints;
 		_energyPoints = other._energyPoints;
 		_attackDamage = other._attackDamage;
+		_maxHp = other._maxHp;
 	}
-	std::cout << "Point Copy Assignment Operator Called" << std::endl;
+	std::cout << "ClapTrap Copy Assignment Operator Called" << std::endl;
 	return (*this);
 }
 
@@ -76,10 +78,10 @@ void	ClapTrap::beRepaired( unsigned int value)
 	else
 	{
 		int	heal = _hitPoints + value;
-		if (heal > 10)
+		if (heal > _maxHp)
 		{
-			_hitPoints = 10;
-			std::cout << _name << " repairs itself for " << (10 - (_hitPoints - value)) << " hit points!" << std::endl;
+			_hitPoints = _maxHp;
+			std::cout << _name << " repairs itself for " << (_maxHp - (_hitPoints - value)) << " hit points!" << std::endl;
 		}
 		else
 		{
