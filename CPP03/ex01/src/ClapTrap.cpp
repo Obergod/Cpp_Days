@@ -44,9 +44,9 @@ ClapTrap::~ClapTrap()
 void	ClapTrap::attack( const std::string &target)
 {
 	if (this->_hitPoints <= 0)
-		std::cout << "ClapTrap " << _name << " is still dead :(" << std::endl;
+		std::cout << _name << " can't attack he is still dead :(" << std::endl;
 	else if (this->_energyPoints <= 0)
-		std::cout << "ClapTrap " << _name << " Has no more energy points !" << std::endl;
+		std::cout << _name << " can't attack he Has no more energy points !" << std::endl;
 	else
 	{
 		std::cout << _name << " attacks " << target << ", causing "
@@ -58,33 +58,33 @@ void	ClapTrap::attack( const std::string &target)
 void	ClapTrap::takeDamage( unsigned int value )
 {
 	if (this->_hitPoints <= 0)
-		std::cout << "ClapTrap " << _name << " is already dead :(" << std::endl;
+		std::cout << _name << " is already dead :(" << std::endl;
 	else
 	{
 		this->_hitPoints -= value;
 		if (this->_hitPoints <= 0)
-			std::cout << "ClapTrap " << _name << " is dead :(" << std::endl;
+			std::cout << _name << " is dead :(" << std::endl;
 	}
 }
 
 void	ClapTrap::beRepaired( unsigned int value)
 {
 	if (this->_hitPoints <= 0)
-		std::cout << "ClapTrap " << _name << " can't repair he is still dead :(" << std::endl;
+		std::cout << _name << " can't repair he is still dead :(" << std::endl;
 	else if (this->_energyPoints <= 0)
-		std::cout << "ClapTrap " << _name << " Has no more energy points !" << std::endl;
+		std::cout << _name << " can't repair he has no more energy points !" << std::endl;
 	else
 	{
 		int	heal = _hitPoints + value;
 		if (heal > 10)
 		{
 			_hitPoints = 10;
-			std::cout << "ClapTrap " << _name << " repairs itself for " << (10 - (_hitPoints - value))  << std::endl;
+			std::cout << _name << " repairs itself for " << (10 - (_hitPoints - value)) << " hit points!" << std::endl;
 		}
 		else
 		{
 			_hitPoints += value;
-			std::cout << "ClapTrap " << _name << " repairs itself for " << value << " hit points!" << std::endl;
+			std::cout << _name << " repairs itself for " << value << " hit points!" << std::endl;
 		}
 		_energyPoints-= value;
 	}
