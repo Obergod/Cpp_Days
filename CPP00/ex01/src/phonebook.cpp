@@ -72,6 +72,9 @@ std::string	add_i(std::string msg)
 		std::getline(std::cin, line);
 		if (line.empty())
 			std::cout << "line can't be empty, try again :)" << std::endl;
+		else if
+			(msg == "insert phone number" && !is_number(line))
+				std::cout << "Not a number try again" << std::endl;
 		else
 			break;
 	}
