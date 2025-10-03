@@ -37,24 +37,7 @@ Animal::~Animal()
 	std::cout << "Animal Default destructor called" << std::endl;
 }
 
-void	Animal::makeSound() const
-{
-	std::cout << "*Uncomprehensible growling*" << std::endl;
-}
-
 std::string	Animal::getType() const
 {
 	return _type;
-}
-
-void	Animal::setIdea(int i, const std::string &idea) const
-{
-	(void)i;
-	(void)idea;
-}
-
-std::string	Animal::getIdea(int i) const
-{
-	(void)i;
-	return "";
 }

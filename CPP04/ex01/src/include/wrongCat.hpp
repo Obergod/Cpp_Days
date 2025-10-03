@@ -1,35 +1,30 @@
-wha/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dog.hpp                                            :+:      :+:    :+:   */
+/*   wrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 19:27:16 by mafioron          #+#    #+#             */
-/*   Updated: 2025/09/30 19:27:17 by mafioron         ###   ########.fr       */
+/*   Created: 2025/09/30 20:53:30 by mafioron          #+#    #+#             */
+/*   Updated: 2025/09/30 20:53:31 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
 
-#include "animal.hpp"
-# include "brain.hpp"
+#include "wrongAnimal.hpp"
 # include <iostream>
 # include <string>
 
-class	Dog : public Animal
+class	WrongCat : public WrongAnimal
 {
-	private:
-		mutable Brain*	_brain;
 	public:
-		Dog();
-		Dog(const Dog &other);
-		Dog &operator=(const Dog &other);
-		~Dog();
+		WrongCat();
+		WrongCat(const WrongCat &other);
+		WrongCat &operator=(const WrongCat &other);
+		~WrongCat() ;
 		virtual void	makeSound() const;
-		virtual void	setIdea(int i, const std::string &idea) const;
-		virtual std::string	getIdea(int i) const;
 };
 
 

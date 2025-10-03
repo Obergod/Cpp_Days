@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   brain.hpp                                          :+:      :+:    :+:   */
+/*   animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/01 17:16:48 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/01 17:16:49 by mafioron         ###   ########.fr       */
+/*   Created: 2025/09/30 19:27:04 by mafioron          #+#    #+#             */
+/*   Updated: 2025/09/30 19:27:06 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
-#include <string>
-#include <iostream>
 
-class	Brain
+# include <iostream>
+# include <string>
+
+class	Animal
 {
-	private:
-		std::string _ideas[100];
+	protected:
+		std::string _type;
 	public:
-		Brain();
-		Brain(const Brain &other);
-		Brain &operator=(const Brain &other);
-		~Brain();
-		void	setIdea(int i, const std::string &idea);
-		std::string	getIdea(int i) const;
+		Animal();
+		Animal(const Animal &other);
+		Animal &operator=(const Animal &other);
+		virtual ~Animal();
+		virtual void	makeSound() const = 0;
+		std::string	getType() const;
+		virtual void	setIdea(int i, const std::string &idea) const = 0;
+		virtual std::string	getIdea(int i) const = 0;
 };
-
 
 
 
