@@ -10,10 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARCTER_HPP
-# define ICHARCTER_HPP
+#ifndef CHARCTER_HPP
+# define CHARCTER_HPP
 
-#include "AMateria.hpp"
+#include <iostream>
+#include <string>
+
+class	AMateria;
 
 class ICharacter
 {
@@ -25,6 +28,24 @@ class ICharacter
 		virtual void use(int idx, ICharacter& target) = 0;
 };
 
+class	Character : public ICharacter
+{
+	private:
+		AMateria	*_inventory[4];
+		std::string	_name;
+		int			_materiaNb;
+	public:
+		Character( std::string name );
+		Character( const Character &other );
+		Character &operator=( const Character &other );
+		~Character();
+		virtual std::string const &getName() const;
+		virtual void equip(AMateria* m);
+		virtual void unequip(int idx);
+		virtual void use(int idx, ICharacter& target);
+
+	
+};
 
 
 

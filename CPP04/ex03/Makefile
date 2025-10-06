@@ -1,5 +1,5 @@
 # Noms
-NAME = Polymorphism
+NAME = Materia
 OBJ_DIR = obj
 
 # Repertorys
@@ -27,7 +27,8 @@ CLEAR = \033[2K\r
 
 
 # Sources
-COMMON_SRC = dog.cpp cat.cpp animal.cpp wrongCat.cpp wrongAnimal.cpp main.cpp 
+COMMON_SRC = AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp \
+			main.cpp
 COMMON_SRCS = $(addprefix $(SRCS_DIR), $(COMMON_SRC))
 OBJ_FILES = $(patsubst $(SRCS_DIR)%.cpp,$(OBJ_DIR)/%.o,$(COMMON_SRCS))
 DEP_FILES = $(OBJ_FILES:.o=.d)
