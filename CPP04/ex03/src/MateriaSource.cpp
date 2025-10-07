@@ -74,7 +74,7 @@ void MateriaSource::learnMateria(AMateria* m)
 		return ;
 	}
 
-	_memory[_memoryNb] = m->clone();
+	_memory[_memoryNb] = m;
 	std::cout << m->getType() << " Materia added" << std::endl;
 	_memoryNb++;
 	std::cout << "You have " << (4 - _memoryNb) << " memory slot left" << std::endl;
@@ -91,7 +91,7 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 
 	for (int i = (_memoryNb - 1); i >= 0; i--)
 	{
-		if (_memory[i]->getType() == type)
+		if (_memory[i] && _memory[i]->getType() == type)
 			return _memory[i]->clone();
 	}
 	std::cout << "type is unknown or dosen't exist in memory" << std::endl;

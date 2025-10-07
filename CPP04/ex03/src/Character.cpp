@@ -91,10 +91,11 @@ void	Character::equip( AMateria *m )
 	{
 		if (_inventory[i] == NULL)
 		{
-			_inventory[i] = m->clone();
+			_inventory[i] = m;
 			std::cout << m->getType() << " Materia added" << std::endl;
 			_materiaNb++;
 			std::cout << "You have " << (4 - _materiaNb) << " inventory slot left" << std::endl;
+			break ;
 		}
 	}
 }
