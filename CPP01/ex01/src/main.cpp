@@ -14,13 +14,18 @@
 
 int	main()
 {
-	int	n = 0;
-
+	int	n = 5;
 	Zombie	*z1 = zombieHorde(n, "henry");
-	if (z1 == NULL)
-		return (1);
+	Zombie	*z2 = zombieHorde(n, "HEEENRY");
+
 	for (int i = 0; i < n; i++)
+	{
 		z1->announce();
+		z2->announce();
+	}
+
 	delete[] z1;
+	delete[] z2;
+
 	return (0);
 }
