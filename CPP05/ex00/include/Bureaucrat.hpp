@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREACRAT_HPP
-# define BUREACRAT_HPP
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 #include <string>
 #include <iostream>
@@ -42,8 +42,6 @@ class	Bureaucrat
 			public:
 				virtual const char	*what() const throw();
 		};
-
-		
 };
 
 std::ostream	&operator<<(std::ostream &os, Bureaucrat &br);
