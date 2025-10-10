@@ -11,68 +11,13 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main()
 {
 	try
 	{
-		Bureaucrat("Alain", 151);
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout <<std::endl;
-	try
-	{
-		Bureaucrat("Alain", 0);
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try
-	{
-		Bureaucrat Alain = Bureaucrat("Alain", 150);
-		std::cout << Alain;
-		Alain.decGrade();
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try
-	{
-		Bureaucrat Henry = Bureaucrat("Henry", 1);
-		std::cout << Henry;
-		Henry.incGrade();
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try
-	{
-		Bureaucrat Henry = Bureaucrat("Henry", 1);
+		Bureaucrat Henry("Henry", 1);
 		std::cout << Henry;
 		Henry.decGrade();
 		std::cout << Henry;
@@ -85,5 +30,19 @@ int	main()
 	{
 		std::cout << e.what() << std::endl;
 	}
-
+	try
+	{
+		Form b("b", 3, 10);
+	}
+	catch (Form::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	Bureaucrat Henry("Henry", 1);
+	Form b("b", 3, 10);
+	Henry.signForm(b);
 }

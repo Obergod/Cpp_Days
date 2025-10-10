@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include "Bureaucrat.hpp"
 
 class	Form
 {
@@ -25,12 +26,15 @@ class	Form
 		const int	_sGrade;
 		const int	_eGrade;
 	public:
-		Form( const std::string &name, bool signed, const int sGrade, const int eGrade);
+		Form( const std::string &name, const int sGrade, const int eGrade);
 		Form( const Form &other );
 		Form &operator=( const Form &other );
 		~Form();
 		std::string	getName();
-		int			getGrade();
+		int			getSGrade();
+		int			getEGrade();
+		int			getSigned();
+		void		beSigned( Bureaucrat &br );
 
 		class	GradeTooHighException : public std::exception
 		{
@@ -42,9 +46,9 @@ class	Form
 			public:
 				virtual const char	*what() const throw();
 		};
-}
+};
 
-std::ostream	&operator<<(std::ostream &os, Bureaucrat &br);
+std::ostream	&operator<<(std::ostream &os, Form &f);
 
 
 

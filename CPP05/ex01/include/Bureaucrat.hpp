@@ -17,6 +17,8 @@
 #include <iostream>
 #include <stdexcept>
 
+class Form;
+
 class	Bureaucrat
 {
 	private:
@@ -31,6 +33,7 @@ class	Bureaucrat
 		int			getGrade();
 		void		incGrade();
 		void		decGrade();
+		void		signForm(Form &form);
 		
 		class	GradeTooHighException : public std::exception
 		{

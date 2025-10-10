@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &name )
 {
@@ -98,4 +99,18 @@ std::ostream	&operator<<(std::ostream &os, Bureaucrat &br)
 	os << br.getName() << ", bureaucrat grade " << br.getGrade() << "." << std::endl;
 	
 	return os;
+}
+
+
+void		Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch (Form::GradeTooLowException & e)
+	{
+		std::cout << this << "couldn't sign " << form << " because " << e.what();
+	}
+	std::cout << *this << "signed " << form;
 }
