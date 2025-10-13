@@ -56,17 +56,17 @@ void	FragTrap::highFivesGuys()
 		if (line == "Yes" || line == "yes" || line == "y")
 		{
 			std::cout << "Really ?   ...\n" << "its your choise after all..." << std::endl;
-			std::cout << _name << " < OH YEAH HIGHFIVE >" << std::endl;
+			std::cout << std::endl << _name << " < OH YEAH HIGHFIVE >" << std::endl;
 		}
-		else if (line == "No" || line == "no" || line == "N")
+		else if (line == "No" || line == "no" || line == "n")
 			std::cout << "Good decision" << std::endl;
 		else
-			std::cout << "No one understands your giberish " <<
+			std::cout << "No one understands your giberish. " <<
 				_name << " leaves" << std::endl;
 	}
-	else if (line == "No" || line == "no" || line == "N")
+	else if (line == "No" || line == "no" || line == "n")
 		std::cout << "Good decision" << std::endl;
 	else
-		std::cout << "No one understands your giberish " <<
+		std::cout << "No one understands your giberish. " <<
 			_name << " leaves" << std::endl;
 }
