@@ -12,7 +12,7 @@
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm( const std::string &target ) : AForm("RobotomyRequestForm", 145, 137), _target(target)
+RobotomyRequestForm::RobotomyRequestForm( const std::string &target ) : AForm("RobotomyRequestForm", 72, 45), _target(target)
 {
 	std::cout << "RobotomyRequestForm default constructor called" << std::endl;
 }
@@ -40,8 +40,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void		RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	if (executor.getGrade() > this->getSGrade())
-		throw GradeTooHighException();
+	if (executor.getGrade() > this->getEGrade())
+		throw GradeTooLowException();
 	std::cout << "--- Robotomy procedure starting ---" << std::endl;
 	usleep(50000);
 	std::cout << "* DRILLING NOISE *" << std::endl;

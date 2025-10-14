@@ -17,7 +17,7 @@
 #include <iostream>
 #include <stdexcept>
 
-class Form;
+class AForm;
 
 class	Bureaucrat
 {
@@ -31,9 +31,10 @@ class	Bureaucrat
 		~Bureaucrat();
 		std::string	getName() const;
 		int			getGrade() const;
-		void		incGrade() const;
-		void		decGrade() const;
-		void		signForm(Form &form);
+		void		incGrade();
+		void		decGrade();
+		void		signForm(AForm &form);
+		void		executeForm(AForm const &form);
 		
 		class	GradeTooHighException : public std::exception
 		{
@@ -55,7 +56,7 @@ class	Bureaucrat
 		};
 };
 
-std::ostream	&operator<<(std::ostream &os, Bureaucrat &br);
+std::ostream	&operator<<(std::ostream &os, const Bureaucrat &br);
 
 
 

@@ -41,5 +41,28 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 //Gotta do exec grade execption
 void		ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
+	if (executor.getGrade() > this->getEGrade())
+		throw GradeTooHighException();
 
+	std::string	name = _target + "_shrubbery";
+	std::ofstream	file(name.c_str());
+
+	if (!file)
+	{
+		std::cerr << _target << " File failed to create" << std::endl;
+		return ;
+	}
+
+	file << "       _-_\n";
+    file << "    /~~   ~~\\\n";
+    file << " /~~         ~~\\\n";
+    file << "{               }\n";
+    file << " \\  _-     -_  /\n";
+    file << "   ~  \\\\ //  ~\n";
+    file << "_- -   | | _- _\n";
+    file << "  _ -  | |   -_\n";
+    file << "      // \\\\\n";
+    file << "\n";
+
+	std::cout << name << ", created" << std::endl;
 }

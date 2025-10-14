@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string &name )
 {
@@ -59,12 +59,12 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "Bureaucrat default destructor called" << std::endl;
 }
 
-std::string	Bureaucrat::getName()
+std::string	Bureaucrat::getName() const
 {
 	return _name;
 }
 
-int			Bureaucrat::getGrade()
+int			Bureaucrat::getGrade() const
 {
 	return _grade;
 }
@@ -94,7 +94,7 @@ const char	*Bureaucrat::GradeTooLowException::what() const throw()
 	return _errMsg.c_str();
 }
 
-std::ostream	&operator<<(std::ostream &os, Bureaucrat &br)
+std::ostream	&operator<<(std::ostream &os, const Bureaucrat &br)
 {
 	os << br.getName() << ", bureaucrat grade " << br.getGrade() << "." << std::endl;
 	
@@ -102,15 +102,27 @@ std::ostream	&operator<<(std::ostream &os, Bureaucrat &br)
 }
 
 
-void		Bureaucrat::signForm(Form &form)
+void		Bureaucrat::signForm(AForm &form)
 {
 	try
 	{
 		form.beSigned(*this);
 	}
-	catch (Form::GradeTooLowException & e)
+	catch (AForm::GradeTooLowException & e)
 	{
-		std::cout << this << "couldn't sign " << form << " because " << e.what();
+		std::cout << *this << "couldn't sign " << form << " because " << e.what();
 	}
 	std::cout << *this << "signed " << form;
+}
+
+void		Bureaucrat::executeForm(AForm const &form)
+{
+	try
+	{
+		form.execute(*this);
+	}
+	catch (AForm::GradeTooLowException & e)
+	{
+		std::cout << *this << "couldn't execute" << form << " because " << e.what();
+	}
 }

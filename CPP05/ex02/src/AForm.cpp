@@ -43,22 +43,22 @@ AForm::~AForm()
 	std::cout << "AForm default destructor called" << std::endl;
 }
 
-std::string	AForm::getName()
+std::string	AForm::getName() const
 {
 	return _name;
 }
 
-int			AForm::getSGrade()
+int			AForm::getSGrade() const
 {
 	return _sGrade;
 }
 
-int			AForm::getEGrade()
+int			AForm::getEGrade() const
 {
 	return _eGrade;
 }
 
-int			AForm::getSigned()
+int			AForm::getSigned() const
 {
 	return _signed;
 }
@@ -80,7 +80,7 @@ const char	*AForm::GradeTooLowException::what() const throw()
 	return "grade too low";
 }
 
-std::ostream	&operator<<(std::ostream &os, AForm &f)
+std::ostream	&operator<<(std::ostream &os, const AForm &f)
 {
 	os << f.getName() << " form. grade needed to sign: " << f.getSGrade() <<
 		" grade needed to exec: " << f.getEGrade() << 
