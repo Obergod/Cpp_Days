@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dog.hpp                                            :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 19:27:16 by mafioron          #+#    #+#             */
-/*   Updated: 2025/09/30 19:27:17 by mafioron         ###   ########.fr       */
+/*   Created: 2025/09/11 20:53:41 by mafioron          #+#    #+#             */
+/*   Updated: 2025/09/11 20:53:45 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-#include "animal.hpp"
-# include "brain.hpp"
-# include <iostream>
-# include <string>
+#include "Weapon.hpp"
 
-class	Dog : public Animal
+class	HumanB
 {
 	private:
-		mutable Brain*	_brain;
+		std::string _name;
+		Weapon*		_weapon;
 	public:
-		Dog();
-		Dog(const Dog &other);
-		Dog &operator=(const Dog &other);
-		~Dog();
-		virtual void	makeSound() const;
-		virtual void	setIdea(int i, const std::string &idea) const;
-		virtual std::string	getIdea(int i) const;
+		HumanB(std::string name);
+		~HumanB();
+		void	attack();
+		void	setWeapon(Weapon &weapon);
+
 };
-
-
 
 
 

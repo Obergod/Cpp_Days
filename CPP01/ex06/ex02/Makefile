@@ -1,5 +1,5 @@
 # Noms
-NAME = execute
+NAME = HI_THIS_IS_BRAIN
 OBJ_DIR = obj
 
 # Repertorys
@@ -15,9 +15,6 @@ WFLAGS = -g3 -std=c++98
 CFLAGS  = $(WFLAGS) -I$(INCS_DIR) -O3
 DEPFLAGS = -MMD -MP
 
-# Debug flags
-CFLAGS += -DNO_DEBUG_CONSTRUCTORS
-
 # Affichage
 GREEN = \033[32m
 YELLOW = \033[33m
@@ -27,7 +24,7 @@ CLEAR = \033[2K\r
 
 
 # Sources
-COMMON_SRC = PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp AForm.cpp Bureaucrat.cpp main.cpp 
+COMMON_SRC = main.cpp 
 COMMON_SRCS = $(addprefix $(SRCS_DIR), $(COMMON_SRC))
 OBJ_FILES = $(patsubst $(SRCS_DIR)%.cpp,$(OBJ_DIR)/%.o,$(COMMON_SRCS))
 DEP_FILES = $(OBJ_FILES:.o=.d)

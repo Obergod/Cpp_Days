@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dog.hpp                                            :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 19:27:16 by mafioron          #+#    #+#             */
-/*   Updated: 2025/09/30 19:27:17 by mafioron         ###   ########.fr       */
+/*   Created: 2025/09/24 17:22:05 by mafioron          #+#    #+#             */
+/*   Updated: 2025/09/24 17:22:07 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 
-#include "animal.hpp"
-# include "brain.hpp"
 # include <iostream>
 # include <string>
 
-class	Dog : public Animal
+class	Harl
 {
 	private:
-		mutable Brain*	_brain;
+		void debug();
+		void info();
+		void warning();
+		void error();
+		std::string levels[4];
 	public:
-		Dog();
-		Dog(const Dog &other);
-		Dog &operator=(const Dog &other);
-		~Dog();
-		virtual void	makeSound() const;
-		virtual void	setIdea(int i, const std::string &idea) const;
-		virtual std::string	getIdea(int i) const;
+		Harl();
+		~Harl();
+		void complain(std::string level);
+		void (Harl::*f[4])(void);
 };
-
-
-
-
 
 
 #endif

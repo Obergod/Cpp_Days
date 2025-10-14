@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dog.hpp                                            :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 19:27:16 by mafioron          #+#    #+#             */
-/*   Updated: 2025/09/30 19:27:17 by mafioron         ###   ########.fr       */
+/*   Created: 2025/10/14 18:15:07 by mafioron          #+#    #+#             */
+/*   Updated: 2025/10/14 18:15:08 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
-#include "animal.hpp"
-# include "brain.hpp"
-# include <iostream>
-# include <string>
+#include "AForm.hpp"
+#include <string>
+#include <iostream>
 
-class	Dog : public Animal
+class	Intern
 {
-	private:
-		mutable Brain*	_brain;
 	public:
-		Dog();
-		Dog(const Dog &other);
-		Dog &operator=(const Dog &other);
-		~Dog();
-		virtual void	makeSound() const;
-		virtual void	setIdea(int i, const std::string &idea) const;
-		virtual std::string	getIdea(int i) const;
+		Intern();
+		Intern( const Intern &other );
+		Intern &operator=( const Intern&other );
+		~Intern();
+
+		AForm	*makeForm( const std::string &formName, const std::string &target);
+
+
 };
+
+
+
+
+
+
+
+
 
 
 

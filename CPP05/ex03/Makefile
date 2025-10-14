@@ -1,5 +1,5 @@
 # Noms
-NAME = execute
+NAME = Intern
 OBJ_DIR = obj
 
 # Repertorys
@@ -11,7 +11,7 @@ INCS_DIR = include/
 
 # Compilation
 CC = c++
-WFLAGS = -g3 -std=c++98
+WFLAGS = -g3 -std=c++98 -Wall -Werror -Wextra
 CFLAGS  = $(WFLAGS) -I$(INCS_DIR) -O3
 DEPFLAGS = -MMD -MP
 
@@ -27,7 +27,7 @@ CLEAR = \033[2K\r
 
 
 # Sources
-COMMON_SRC = PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp AForm.cpp Bureaucrat.cpp main.cpp 
+COMMON_SRC = Intern.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp AForm.cpp Bureaucrat.cpp main.cpp 
 COMMON_SRCS = $(addprefix $(SRCS_DIR), $(COMMON_SRC))
 OBJ_FILES = $(patsubst $(SRCS_DIR)%.cpp,$(OBJ_DIR)/%.o,$(COMMON_SRCS))
 DEP_FILES = $(OBJ_FILES:.o=.d)

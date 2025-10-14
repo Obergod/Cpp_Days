@@ -18,15 +18,16 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-int main() {
+int main() 
+{
     srand(time(0)); 
     
     std::cout << "=== Basic Form Testing ===" << std::endl;
     
     try {
-        Bureaucrat highLevel("Boss", 1);
-        Bureaucrat midLevel("Manager", 50);
-        Bureaucrat lowLevel("Intern", 150);
+        Bureaucrat highLevel("Boss", 1);        
+        Bureaucrat midLevel("Manager", 40);    
+        Bureaucrat lowLevel("Gardener", 130); 
         
         std::cout << highLevel << std::endl;
         std::cout << midLevel << std::endl;
@@ -37,16 +38,20 @@ int main() {
         ShrubberyCreationForm shrubbery("garden");
         
         std::cout << "\n--- Presidential Pardon ---" << std::endl;
-        highLevel.signForm(pardon);
-        pardon.execute(highLevel);
+        highLevel.signForm(pardon);         
+        highLevel.executeForm(pardon);     
         
-        std::cout << "\n--- Robotomy Request ---" << std::endl;
-        midLevel.signForm(robotomy);
-        robotomy.execute(midLevel);
+        std::cout << "\n--- Robotomy Request ---" << std::endl << std::endl; 
+        highLevel.signForm(robotomy);     
+        midLevel.executeForm(robotomy);  
+		std::cout << std::endl;
+        lowLevel.executeForm(robotomy);  
+		std::cout << std::endl;
         
         std::cout << "\n--- Shrubbery Creation ---" << std::endl;
-        lowLevel.signForm(shrubbery);
-        shrubbery.execute(lowLevel);
+        lowLevel.signForm(shrubbery);   
+        lowLevel.executeForm(shrubbery);
+		std::cout << std::endl;
         
     } catch (const std::exception& e) {
         std::cout << "Exception: " << e.what() << std::endl;
