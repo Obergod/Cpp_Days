@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:51:52 by mafioron          #+#    #+#             */
-/*   Updated: 2025/09/30 20:51:53 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/10/17 17:03:44 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class	WrongAnimal
 		WrongAnimal();
 		WrongAnimal(const WrongAnimal &other);
 		WrongAnimal &operator=(const WrongAnimal &other);
-		~WrongAnimal();
+		virtual ~WrongAnimal();
 		virtual void	makeSound() const;
 		std::string	getType() const;
 };

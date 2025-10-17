@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 19:27:04 by mafioron          #+#    #+#             */
-/*   Updated: 2025/09/30 19:27:06 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/10/17 16:57:14 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class	Animal
 		Animal();
 		Animal(const Animal &other);
 		Animal &operator=(const Animal &other);
-		~Animal();
+		virtual ~Animal();
 		virtual void	makeSound() const;
 		std::string	getType() const;
 };

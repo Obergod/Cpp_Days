@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 19:24:10 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/03 19:24:11 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/10/17 17:36:47 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main()
 	me->use(0, *bob);
 	me->use(1, *bob);
 
+	std::cout << std::endl << "=== Destructor === " << std::endl;
 	delete bob;
 	delete me;
 	delete src;
