@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:12:13 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/16 21:45:35 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/10/20 22:29:32 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,64 +36,20 @@ Scalar::~Scalar()
 	std::cout << "Scalar default destructor called" << std::endl;
 }
 
-static bool	isChar( const std::string &s )
+void	Scalar::convert( std::string &s )
 {
-	if (s.empty() || s.size() > 1)
-		return false;
-	if (s[0] < 32 || s[0] > 126)
-		return false;
-	return true;
-}
-
-static bool	isInt( const std::string &s ) 
-{
-	if (s.empty())
-		return false;
-
-	std::stringstream	ss(s);
-	int	i;
-
-	if (ss >> i && ss.eof())
-		return true;
-	return false;
-}
-
-static bool	isDouble( const std::string &s ) 
-{
-	if (s.empty())
-		return false;
-
-	std::stringstream	ss(s);
-	double d;
-
-	if (s.find('.') == std::string::npos)
-		return false;
-	if (ss >> d && ss.eof())
-		return true;
-	return false;
-}
-
-static bool	isFloat( const std::string &s ) 
-{
-	if (s.empty())
-		return false;
-
-	std::stringstream	ss(s);
-	float f;
-
-	if (s.find('.') == std::string::npos)
-		return false;
-	if (s.back() != 'f')
-		return false;
-
-	std::string noF = s.substr(0, s.back() - 2);
-
-	if (ss >> f && ss.eof())
-		return true;
-	return false;
-}
-
-static void	convert( std::string &s )
-{
-	
+	if (isChar(s))
+		outputAsChar(s);
+	else if (isInt(s))
+		outputAsInt(s);
+	else if (isFloat(s))
+		outputAsFloat(s);
+	else if (isDouble(s))
+		outputAsDouble(s);
+	else if (isNan(s))
+		outputAsNan();
+	else
+	{
+		std::cout << "Error: not printable" << std::endl;
+	}
 }
