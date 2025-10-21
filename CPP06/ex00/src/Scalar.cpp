@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:12:13 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/20 22:29:32 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:38:54 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ Scalar::~Scalar()
 
 void	Scalar::convert( std::string &s )
 {
+	bool	isPos;
+
 	if (isChar(s))
 		outputAsChar(s);
 	else if (isInt(s))
@@ -46,6 +48,8 @@ void	Scalar::convert( std::string &s )
 		outputAsFloat(s);
 	else if (isDouble(s))
 		outputAsDouble(s);
+	else if (isInf(s, &isPos))
+		outputAsInf(s, isPos);
 	else if (isNan(s))
 		outputAsNan();
 	else
