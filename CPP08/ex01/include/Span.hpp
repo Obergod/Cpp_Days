@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <mafioron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/22 21:15:56 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/30 18:29:51 by mafioron         ###   ########.fr       */
+/*   Created: 2025/10/30 18:40:34 by mafioron          #+#    #+#             */
+/*   Updated: 2025/10/30 18:42:24 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-#define EASYFIND_HPP
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
 #include <iostream>
 #include <string>
 #include <algorithm>
 
-template <typename T>
-typename T::iterator	easyfind(T &t, int nb)
+
+class	Span
 {
-	return std::find(t.begin(), t.end(), nb);
-}
+	private:
+	public:
+		Span();
+		Span(const Span &other);
+		Span &operator=( const Span &other );
+		~Span();
 
-
-
+};
 
 
 
