@@ -27,7 +27,7 @@ CLEAR = \033[2K\r
 
 
 # Sources
-COMMON_SRC = main.cpp 
+COMMON_SRC = BitcoinExchange.cpp main.cpp 
 COMMON_SRCS = $(addprefix $(SRCS_DIR), $(COMMON_SRC))
 OBJ_FILES = $(patsubst $(SRCS_DIR)%.cpp,$(OBJ_DIR)/%.o,$(COMMON_SRCS))
 DEP_FILES = $(OBJ_FILES:.o=.d)
