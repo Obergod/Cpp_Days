@@ -5,29 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <mafioron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/12 22:01:14 by mafioron          #+#    #+#             */
-/*   Updated: 2025/11/13 17:13:16 by mafioron         ###   ########.fr       */
+/*   Created: 2025/11/13 20:29:06 by mafioron          #+#    #+#             */
+/*   Updated: 2025/11/13 20:32:48 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
 int	main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		std::cerr << "Error: could not open file." << std::endl;
+		std::cerr << "Error: Bad argument count" << std::endl;
 		return (1);
 	}
 
 	try
 	{
-		BtcExchange btc;
+		Rpn	rpn;
+	
+		std::stringstream ss(av[1]);
 
-		btc.printBtcRate(av[1]);
+		rpn.mainLoop(ss);
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 }
