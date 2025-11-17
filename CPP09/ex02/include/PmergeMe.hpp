@@ -6,7 +6,7 @@
 /*   By: mafioron <mafioron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 21:03:25 by mafioron          #+#    #+#             */
-/*   Updated: 2025/11/14 19:11:16 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:44:57 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ class	Pmerge
 		std::vector<int>	_vec;
 		std::deque<int>		_deq;
 
-		int	_vecTime;
-		int	_deqTime;
+		bool	_hasStraggler;
+		int		_pairCount;
+		int		_vecTime;
+		int		_deqTime;
 	public:
 		Pmerge();
 		Pmerge(const Pmerge &other);

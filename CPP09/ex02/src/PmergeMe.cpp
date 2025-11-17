@@ -6,19 +6,19 @@
 /*   By: mafioron <mafioron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:14:36 by mafioron          #+#    #+#             */
-/*   Updated: 2025/11/14 21:14:01 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:58:22 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-Pmerge::Pmerge() : _vecTime(0), _deqTime(0)
+Pmerge::Pmerge() : _vecTime(0), _deqTime(0), _hasStraggler(0), _pairCount(0)
 {
 	std::cout << "Pmerge Default constructor called" << std::endl;
 }
 
-Pmerge::Pmerge( const Pmerge &other ) : _vecTime(other._vecTime), _deqTime(other._deqTime),
-										_vec(other._vec), _deq(other._deq)
+Pmerge::Pmerge( const Pmerge &other ) : _vecTime(other._vecTime), _deqTime(other._deqTime), _hasStraggler(other._hasStraggler),
+										 _pairCount(other._pairCount), _vec(other._vec), _deq(other._deq)
 {
 	std::cout << "Pmerge copy constructor called" << std::endl;
 }
@@ -29,6 +29,8 @@ Pmerge	&Pmerge::operator=( const Pmerge &other )
 	{
 		_vecTime = other._vecTime;
 		_deqTime = other._deqTime;
+		_hasStraggler = other._hasStraggler;
+		_pairCount = other._pairCount;
 		_vec = other._vec;
 		_deq = other._deq;
 	}
@@ -66,9 +68,11 @@ void	Pmerge::parseInput(int ac, char **av)
 			_vec.push_back(nb);
 			_deq.push_back(nb);
 		}
-//		if (!ss.eof())
-//			throw BadInputException();
+		if (!ss.eof())
+			throw BadInputException();
 	}
+	_hasStraggler = (_vec.size() % 2 != 0) ? true : false;
+	_pairCount = (_hasStraggler) ? _deq.size() - 1 : _deq.size();
 
 	std::cout << "Before: ";
 	for (int i = 0; i < _vec.size(); i++)
@@ -80,29 +84,27 @@ void	Pmerge::parseInput(int ac, char **av)
 
 void	Pmerge::pairVec()
 {
-	for (std::vector<int>::iterator it = _vec.begin();
-			it + 1 != _vec.end(); it += 2)
+	for (int i = 0; i  < _pairCount; i += 2)
 	{
-		if (*it < *(it + 1))
-			std::swap(*it, *(it + 1));
+		if (_vec[i] < _vec[i + 1])
+			std::swap(_vec[i], _vec[i + 1]);
 	}
 }
 
 void	Pmerge::pairDeq()
 {
-	for (std::deque<int>::iterator it = _deq.begin();
-			it + 1 != _deq.end(); it += 2)
+	for (int i = 0; i  < _pairCount; i += 2)
 	{
-		if (*it < *(it + 1))
-			std::swap(*it, *(it + 1));
+		if (_deq[i] < _deq[i + 1])
+			std::swap(_deq[i], _deq[i + 1]);
 	}
 }
 
 void	Pmerge::sortPairsVec()
 {
-	for	(int i = 0; i + 3 < _vec.size(); i += 2)
+	for (int i = 0; i + 3  < _pairCount; i += 2)
 	{
-		for (int j = i + 2; j + 1 != _vec.size(); j += 2)
+		for (int j = i + 2; j + 1  < _pairCount; j += 2)
 		{
 			if (_vec[i] > _vec[j])
 			{
@@ -116,9 +118,9 @@ void	Pmerge::sortPairsVec()
 
 void	Pmerge::sortPairsDeq()
 {
-	for	(int i = 0; i + 3 < _deq.size(); i += 2)
+	for (int i = 0; i + 3  < _pairCount; i += 2)
 	{
-		for (int j = i + 2; j + 1 != _deq.size(); j += 2)
+		for (int j = i + 2; j + 1  < _pairCount; j += 2)
 		{
 			if (_deq[i] > _deq[j])
 			{
@@ -130,7 +132,6 @@ void	Pmerge::sortPairsDeq()
 	}
 }
 
-//	Fix For even or uneven string
 void	Pmerge::sortVec()
 {
 	pairVec();
@@ -138,27 +139,23 @@ void	Pmerge::sortVec()
 
 	std::vector<int>	b;
 
-	for (int i = 1; i + 1 < _vec.size(); i += 2)
+	for (int i = 1; i  < _pairCount; i += 2)
 		b.push_back(_vec[i]);
-	if (_vec.size() % 2 != 0)
+	if (_hasStraggler)
 		b.push_back(_vec[_vec.size() - 1]);
 
-	for (int i = 1; i + 1 < _vec.size(); i++)
+	for (int i = _pairCount - 1; i >= 1; i -= 2)
 		_vec.erase(_vec.begin() + i);
 
-	if (_vec.size() % 2 != 0)
+	if (_hasStraggler)
 		_vec.erase(_vec.end() - 1);
 
 	for (int i = 0; i < b.size(); i++)
 	{
-		for (int j = 0; j < _vec.size(); j++)
-		{
-			if (b[i] < _vec[j])
-			{
-				_vec.insert(_vec.begin() + j, b[i]);
-				break ;
-			}
-		}
+		std::vector<int>::iterator pos = 
+			std::lower_bound(_vec.begin(), _vec.end(), b[i]);
+
+		_vec.insert(pos, b[i]);
 	}
 }
 
@@ -169,24 +166,25 @@ void	Pmerge::sortDeq()
 
 	std::deque<int>	b;
 
-	// if dosent work add _deq[_deq.size - 1]
-	for (int i = 1; i + 1 < _deq.size(); i++)
-	{
+	for (int i = 1; i  < _pairCount; i += 2)
 		b.push_back(_deq[i]);
+	if (_hasStraggler)
+		b.push_back(_deq[_deq.size() - 1]);
+
+	for (int i = _pairCount - 1; i >= 1; i -= 2)
 		_deq.erase(_deq.begin() + i);
-	}
+
+	if (_hasStraggler)
+		_deq.erase(_deq.end() - 1);
 
 	for (int i = 0; i < b.size(); i++)
 	{
-		for (int j = 0; j < _deq.size(); j++)
-		{
-			if (b[i] < _deq[j])
-			{
-				_deq.insert(_deq.begin() + j, b[i]);
-				break ;
-			}
-		}
+		std::deque<int>::iterator pos = 
+			std::lower_bound(_deq.begin(), _deq.end(), b[i]);
+
+		_deq.insert(pos, b[i]);
 	}
+
 }
 
 void	Pmerge::sort()
