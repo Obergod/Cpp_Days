@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:52:48 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/13 17:52:49 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:47:13 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 void		RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() > this->getEGrade())
-		throw GradeTooLowException();
+		throw BureaucratGradeTooLowException();
 	std::cout << "--- Robotomy procedure starting ---" << std::endl;
 	usleep(50000);
 	std::cout << "* DRILLING NOISE *" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:53:06 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/13 17:53:06 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/11/18 17:00:42 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ PresidentialPardonForm::~PresidentialPardonForm()
 void		PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() > this->getEGrade())
-		throw GradeTooLowException();
-	std::cout << _target << "has been pardoned by Zaphod Beeblebrox." << std::endl;
+		throw BureaucratGradeTooLowException();
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

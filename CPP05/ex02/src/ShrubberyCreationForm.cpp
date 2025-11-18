@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:52:23 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/13 17:52:24 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:47:53 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 void		ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() > this->getEGrade())
-		throw GradeTooHighException();
+		throw BureaucratGradeTooLowException();
 
 	std::string	name = _target + "_shrubbery";
 	std::ofstream	file(name.c_str());

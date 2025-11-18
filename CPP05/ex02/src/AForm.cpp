@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 17:36:55 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/13 17:37:05 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:49:00 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ AForm::AForm( const std::string &name, const int sGrade, const int eGrade) : _na
 {
 	std::cout << "AForm default constructor called" << std::endl;
 	if (sGrade > 150 || eGrade > 150)
-		throw GradeTooLowException();
+		throw FormGradeTooLowException();
 	else if (sGrade < 1 || eGrade < 1)
-		throw GradeTooHighException();
+		throw FormGradeTooHighException();
 }
 
 AForm::AForm( const AForm &other ) : _name(other._name), _signed(other._signed),
@@ -66,18 +66,23 @@ int			AForm::getSigned() const
 void		AForm::beSigned( Bureaucrat &br )
 {
 	if (br.getGrade() > _sGrade)
-		throw GradeTooHighException();
+		throw BureaucratGradeTooLowException();
 	_signed = true;
 }
 
-const char	*AForm::GradeTooHighException::what() const throw()
+const char	*AForm::FormGradeTooHighException::what() const throw()
 {
-	return "grade too high";
+	return "Form's grade too high";
 }
 
-const char	*AForm::GradeTooLowException::what() const throw()
+const char	*AForm::FormGradeTooLowException::what() const throw()
 {
-	return "grade too low";
+	return "Form's grade too low";
+}
+
+const char	*AForm::BureaucratGradeTooLowException::what() const throw()
+{
+	return "Bureaucrat's grade too low";
 }
 
 std::ostream	&operator<<(std::ostream &os, const AForm &f)

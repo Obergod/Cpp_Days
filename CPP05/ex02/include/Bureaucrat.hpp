@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:54:28 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/07 17:54:29 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:51:37 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ class	Bureaucrat
 		~Bureaucrat();
 		std::string	getName() const;
 		int			getGrade() const;
+		int			getSGrade();
+		int			getEGrade();
+		int			getSigned();
 		void		incGrade();
 		void		decGrade();
 		void		signForm(AForm &form);

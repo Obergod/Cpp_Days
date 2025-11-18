@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 20:56:10 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/09 20:56:11 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:31:35 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,17 @@ class	Form
 		int			getSigned();
 		void		beSigned( Bureaucrat &br );
 
-		class	GradeTooHighException : public std::exception
+		class	FormGradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char	*what() const throw();
 		};
-		class	GradeTooLowException : public std::exception
+		class	FormGradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char	*what() const throw();
+		};
+		class	BureaucratGradeTooLowException : public std::exception
 		{
 			public:
 				virtual const char	*what() const throw();

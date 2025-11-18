@@ -6,7 +6,7 @@
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 17:54:09 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/07 17:54:11 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:20:26 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
 
 Bureaucrat::GradeTooLowException::GradeTooLowException(const std::string &name )
 {
-	_errMsg = name + "'s grade too high";
+	_errMsg = name + "'s grade too low";
 }
 
 Bureaucrat::Bureaucrat( const std::string &name, int grade ) : _name(name)

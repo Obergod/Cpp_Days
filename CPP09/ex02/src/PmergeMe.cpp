@@ -6,11 +6,12 @@
 /*   By: mafioron <mafioron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 17:14:36 by mafioron          #+#    #+#             */
-/*   Updated: 2025/11/17 16:58:22 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:04:42 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <iomanip>
 
 Pmerge::Pmerge() : _vecTime(0), _deqTime(0), _hasStraggler(0), _pairCount(0)
 {
@@ -55,7 +56,7 @@ const char	*Pmerge::BadInputException::what() const throw()
 
 void	Pmerge::parseInput(int ac, char **av)
 {
-	for (int i = 0; i < ac; i++)
+	for (int i = 1; i < ac; i++)
 	{
 		std::stringstream	ss(av[i]);
 		int	nb;
@@ -68,14 +69,21 @@ void	Pmerge::parseInput(int ac, char **av)
 			_vec.push_back(nb);
 			_deq.push_back(nb);
 		}
+
+		ss >> std::ws;
+
 		if (!ss.eof())
 			throw BadInputException();
 	}
+
+	if (_vec.empty() || _deq.empty())
+		throw BadInputException();
+
 	_hasStraggler = (_vec.size() % 2 != 0) ? true : false;
 	_pairCount = (_hasStraggler) ? _deq.size() - 1 : _deq.size();
 
 	std::cout << "Before: ";
-	for (int i = 0; i < _vec.size(); i++)
+	for (size_t i = 0; i < _vec.size(); i++)
 	{
 		std::cout << _vec[i] << " ";
 	}
@@ -150,7 +158,7 @@ void	Pmerge::sortVec()
 	if (_hasStraggler)
 		_vec.erase(_vec.end() - 1);
 
-	for (int i = 0; i < b.size(); i++)
+	for (size_t i = 0; i < b.size(); i++)
 	{
 		std::vector<int>::iterator pos = 
 			std::lower_bound(_vec.begin(), _vec.end(), b[i]);
@@ -177,7 +185,7 @@ void	Pmerge::sortDeq()
 	if (_hasStraggler)
 		_deq.erase(_deq.end() - 1);
 
-	for (int i = 0; i < b.size(); i++)
+	for (size_t i = 0; i < b.size(); i++)
 	{
 		std::deque<int>::iterator pos = 
 			std::lower_bound(_deq.begin(), _deq.end(), b[i]);
@@ -189,29 +197,31 @@ void	Pmerge::sortDeq()
 
 void	Pmerge::sort()
 {
-	clock_t vStart = clock();
+    clock_t vStart = clock();
     sortVec();
     clock_t vEnd = clock();
     
     double vecTime = static_cast<double>(vEnd - vStart) / CLOCKS_PER_SEC * 1000000;
-	
-	std::cout << "After: ";
-	for (int i = 0; i < _vec.size(); i++)
-	{
-		std::cout << _vec[i] << " ";
-	}
-	std::cout << std::endl;
+    
+    std::cout << "After: ";
+    for (size_t i = 0; i < _vec.size(); i++)
+    {
+        std::cout << _vec[i] << " ";
+    }
+    std::cout << std::endl;
 
-	clock_t dStart = clock();
+    clock_t dStart = clock();
     sortDeq();
     clock_t dEnd = clock();
     
     double deqTime = static_cast<double>(dEnd - dStart) / CLOCKS_PER_SEC * 1000000;
-	
-	std::cout << "Time to process a range of " << _vec.size()
-			<< " elements with std::vector : " << vecTime << std::endl;
+    
+    std::cout << "Time to process a range of " << _vec.size()
+              << " elements with std::vector : " 
+              << std::fixed << std::setprecision(6) << vecTime << " us" << std::endl;
 
-	std::cout << "Time to process a range of " << _deq.size()
-			<< " elements with std::deque : " << deqTime << std::endl;
+    std::cout << "Time to process a range of " << _deq.size()
+              << " elements with std::deque : " 
+              << std::fixed << std::setprecision(6) << deqTime << " us" << std::endl;
 }
 
