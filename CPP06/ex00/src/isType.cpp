@@ -6,7 +6,7 @@
 /*   By: mafioron <mafioron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 20:21:37 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/21 17:23:42 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/12/03 17:26:03 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ bool	Scalar::isChar( const std::string &s )
 		return false;
 
 	if (s[0] < 32 || s[0] > 126)
+		return false;
+	if (s[0] >= 48 && s[0] <= 57)
 		return false;
 
 	return true;
