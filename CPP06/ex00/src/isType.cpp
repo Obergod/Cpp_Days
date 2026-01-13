@@ -6,7 +6,7 @@
 /*   By: mafioron <mafioron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 20:21:37 by mafioron          #+#    #+#             */
-/*   Updated: 2025/12/03 17:26:03 by mafioron         ###   ########.fr       */
+/*   Updated: 2026/01/13 14:35:54 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,9 @@ bool	Scalar::isNan( const std::string &s )
 	if (s.empty())
 		return false;
 
-	std::stringstream	ss(s);
-	double d;
-	ss >> d;
-
-	if (ss >> d && ss.eof())
-		return false;
-	return true;
+	if (s == "nan" || s == "Nan" || s == "nanf" || s == "Nanf")
+		return true;
+	return false;
 }
 
 bool	Scalar::isChar( const std::string &s )
