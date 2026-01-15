@@ -6,11 +6,9 @@
 /*   By: mafioron <mafioron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 19:33:00 by mafioron          #+#    #+#             */
-/*   Updated: 2025/11/04 16:13:39 by mafioron         ###   ########.fr       */
+/*   Updated: 2026/01/14 18:35:19 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "Array.hpp"
 
 template <typename T>
 Array<T>::Array(): _array(NULL), _size(0)

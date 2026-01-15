@@ -6,42 +6,26 @@
 /*   By: mafioron <mafioron@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 18:15:59 by mafioron          #+#    #+#             */
-/*   Updated: 2025/10/22 18:52:27 by mafioron         ###   ########.fr       */
+/*   Updated: 2026/01/15 15:43:39 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 
-static uintptr_t serialize(void *ptr)
+template <typename T> 
+void print(T const & x)
 {
-	return reinterpret_cast<uintptr_t>(ptr);
+	std::cout << x << std::endl;
 }
 
-static uintptr_t serialize(const void *ptr)
+int main()
 {
-	return reinterpret_cast<uintptr_t>(ptr);
-}
-
-void printInt(int& x) 
-{
-    std::cout << x << " ";
-}
-
-void printChar(char& c) 
-{
-    std::cout << c;
-}
-
-int main() {
-    int numbers[] = {1, 2, 3, 4, 5};
-    std::cout << "Numbers: ";
-    ::iter(serialize(numbers), 5, printInt);
+    int arr[] = {0, 1, 2, 3, 4};
+    std::cout << "Numbers: " << std::endl;
+    iter(arr, 5, print<int>);
     std::cout << std::endl;
-    
+
     const char word[] = {'H', 'e', 'l', 'l', 'o'};
-    std::cout << "Word: ";
-    ::iter(serialize(word), 5, printChar);
-    std::cout << std::endl;
-    
-    return 0;
+    std::cout << "Word: " << std::endl;
+    ::iter(word, 5, print<char>);
 }

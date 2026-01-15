@@ -11,7 +11,7 @@ INCS_DIR = include/
 
 # Compilation
 CC = c++
-WFLAGS = -g3 -std=c++98
+WFLAGS = -g3 -std=c++98 -Wall -Werror -Wextra
 CFLAGS  = $(WFLAGS) -I$(INCS_DIR) -O3
 DEPFLAGS = -MMD -MP
 
